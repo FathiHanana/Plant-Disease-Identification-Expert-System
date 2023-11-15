@@ -1,0 +1,208 @@
+(defrule Menu
+ (not (iffoundChoice ?))
+=> (printout t crlf crlf
+"Symptom Type Looks Like" crlf crlf 
+"1.)Spots" crlf crlf 
+"2.)Wilting" crlf crlf
+"3.)Discoloration" crlf crlf
+"4.)Decay" crlf crlf
+" Enter your choise here (1|2|3|4|5): " )
+(assert (iffoundChoice (read))))
+
+:;-----------R0---------------------
+(defrule Spots
+(iffoundChoice 1)
+ ?retractChy <- (iffoundChoice 1)
+(not (iffoundChoice1 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Spots symptom colour is(1|2)" crlf crlf 
+"1.)Brown colour" crlf crlf 
+"2.)Yellow colour" crlf crlf 
+ " Your answer: ")
+(assert (iffoundChoice1 (read))))
+
+:;-----------R1---------------------
+(defrule Spots1
+(iffoundChoice1 1)
+ ?retractChy <- (iffoundChoice1 1)
+(not (ifYesNoChoice1 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Location is (Leaves|Fruits)" crlf crlf 
+ " Your answer: ")
+(assert (ifYesNoChoice1 (read))))
+
+:;-------------R2--------------------
+(defrule Spots2
+ (ifYesNoChoice1 Fruits)
+ ?retractChy <- (ifYesNoChoice1 Fruits)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "That's probably Brown Spot on Fruit Disease"crlf crlf )) 
+
+:;-------------R3--------------------
+(defrule Spots3
+ (ifYesNoChoice1 Leaves)
+ ?retractChy <- (ifYesNoChoice1 Leaves)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "That's probably Brown Spot Fungus Disease"crlf crlf )) 
+
+:;-----------R4---------------------
+(defrule Spots4
+(iffoundChoice1 2)
+ ?retractChy <- (iffoundChoice1 2)
+(not (ifYesNoChoice2 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Is location Leaves?(yes|no)" crlf crlf 
+ " Your answer: ")
+(assert (ifYesNoChoice2 (read))))
+
+:;-------------R5--------------------
+(defrule Spots5
+ (ifYesNoChoice2 yes)
+ ?retractChy <- (ifYesNoChoice2 yes)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "That's probably Yellow Spotting Disease"crlf crlf )) 
+
+:;-------------R6--------------------
+(defrule Spots6
+ (ifYesNoChoice2 no)
+ ?retractChy <- (ifYesNoChoice2 no)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "Do not worry about this, it's normal"crlf crlf )) 
+
+:;-----------R7---------------------
+(defrule Wilting
+(iffoundChoice 2)
+ ?retractChy <- (iffoundChoice 2)
+(not (ifYesNoChoice3 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Is location Stems?(yes|no)" crlf crlf  
+ " Your answer: ")
+(assert (ifYesNoChoice3 (read))))
+
+:;-------------R8--------------------
+(defrule Wilting1
+ (ifYesNoChoice3 yes)
+ ?retractChy <- (ifYesNoChoice3 yes)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "That's probably Fusarium Wilt Disease"crlf crlf )) 
+
+:;-------------R9--------------------
+(defrule Wilting2
+ (ifYesNoChoice3 no)
+ ?retractChy <- (ifYesNoChoice3 no)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "Do not worry about this, it's normal"crlf crlf )) 
+
+:;-----------R10---------------------
+(defrule Discoloration
+(iffoundChoice 3)
+ ?retractChy <- (iffoundChoice 3)
+(not (iffoundChoice3 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Discoloration symptom colour is(1|2)" crlf crlf 
+"1.)Brown colour" crlf crlf 
+"2.)Yellow colour" crlf crlf 
+ " Your answer: ")
+(assert (iffoundChoice3 (read))))
+
+:;-----------R11---------------------
+(defrule Discoloration1
+(iffoundChoice3 1)
+ ?retractChy <- (iffoundChoice3 1)
+(not (ifYesNoChoice4 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Is location Leaves?(yes|no)" crlf crlf 
+ " Your answer: ")
+(assert (ifYesNoChoice4 (read))))
+
+:;-------------R12--------------------
+(defrule Discoloration2
+ (ifYesNoChoice4 yes)
+ ?retractChy <- (ifYesNoChoice4 yes)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "That's probably Rust Disease"crlf crlf )) 
+
+:;-------------R13--------------------
+(defrule Discoloration3
+ (ifYesNoChoice4 no)
+ ?retractChy <- (ifYesNoChoice4 no)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "Do not worry about this, it's normal"crlf crlf )) 
+
+:;-----------R14---------------------
+(defrule Discoloration4
+(iffoundChoice3 2)
+ ?retractChy <- (iffoundChoice3 2)
+(not (ifYesNoChoice5 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Is location Stems?(yes|no)" crlf crlf 
+ " Your answer: ")
+(assert (ifYesNoChoice5 (read))))
+
+:;-------------R15--------------------
+(defrule Discoloration5
+ (ifYesNoChoice5 yes)
+ ?retractChy <- (ifYesNoChoice5 yes)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "That's probably  Yellowing Stem Syndrom Disease"crlf crlf )) 
+
+:;-------------R16--------------------
+(defrule Discoloration6
+ (ifYesNoChoice5 no)
+ ?retractChy <- (ifYesNoChoice5 no)
+ =>
+ (retract ?retractChy)
+ (printout t crlf crlf crlf "Do not worry about this, it's normal"crlf crlf )) 
+
+:;-----------R17---------------------
+(defrule Decay
+(iffoundChoice 4)
+ ?retractChy <- (iffoundChoice 4)
+(not (ifYesNoChoice6 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Is Decay symptom colour is Black?(yes|no)" crlf crlf  
+ " Your answer: ")
+(assert (ifYesNoChoice6 (read))))
+
+:;-----------R18---------------------
+(defrule Decay1
+(ifYesNoChoice6 yes)
+ ?retractChy <- (ifYesNoChoice6 yes)
+(not (ifYesNoChoice7 ?))
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Is location Roots?(yes|no)" crlf crlf 
+ " Your answer: ")
+(assert (ifYesNoChoice7 (read))))
+
+:;-----------R19---------------------
+(defrule Decay2
+(ifYesNoChoice6 no)
+ ?retractChy <- (ifYesNoChoice6 no)
+ =>  (retract ?retractChy)
+ (printout t crlf crlf crlf "Do not worry about this, it's normal"crlf crlf )) 
+
+:;-----------R20---------------------
+(defrule Decay3
+(ifYesNoChoice7 yes)
+ ?retractChy <- (ifYesNoChoice7 yes)
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "That's probably Root Decay Disease" crlf crlf ))
+
+:;-----------R21---------------------
+(defrule Decay4
+(ifYesNoChoice7 no)
+ ?retractChy <- (ifYesNoChoice7 no)
+ =>  (retract ?retractChy)
+(printout t crlf crlf crlf "Do not worry about this, it's normal" crlf crlf ))
+ 
+ 
+
